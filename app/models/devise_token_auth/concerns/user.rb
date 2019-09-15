@@ -214,6 +214,7 @@ module DeviseTokenAuth::Concerns::User
   end
 
   def should_remove_tokens_after_password_reset?
+    print ENV["DEVISE_ORM"]
     if Rails::VERSION::MAJOR <= 5 or ENV["DEVISE_ORM"] == :mongoid
       encrypted_password_changed? &&
         DeviseTokenAuth.remove_tokens_after_password_reset
